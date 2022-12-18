@@ -15,12 +15,12 @@ def calculate_metrics(pred_labels, true_labels):
     purity = purity_score(pred_labels, true_labels)
     
     confusion = pair_confusion_matrix(true_labels, pred_labels)
-    true_neg = confusion[0,0] 
+    true_neg = confusion[0,0]
     false_pos = confusion[0,1]
     false_neg = confusion[1,0]
     true_pos = confusion[1,1]
-    total_pairs = pred_labels.shape[0] ** 2 - pred_labels.shape[0]
-    
+    total_pairs = np.sum(confusion)
+    np.seterr(divide='ignore', invalid='ignore')
     precision = true_pos / (true_pos + false_pos)
     recall = true_pos / (true_pos + false_neg)
     f1 = 2 * (precision * recall) / (precision + recall)
