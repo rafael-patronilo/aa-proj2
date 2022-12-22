@@ -10,30 +10,38 @@ refers to a test.png image file in the same folder as this document.
 
 QUESTIONS:
 
-Q1: Explain how you selected the best attributes for the clustering phase. In particular, indicate the visualization methods used to explore the extracted attributes and any statistical tests used.
-R1:
+
+Q1: After extracting the attributes, did you standardize or normalize the values? Justify your decision.
+R1: 
 
 
-Q2: After selecting the attributes, did you standardize or normalize the values? Justify your decision.
-R2:
-
-
-Q3: Explain how you found the parameters for the clustering algorithms.
-R3:
+Q2: Explain how you found the parameters for the clustering algorithms.
+R2: We analysed the performance of each algorithm with each parameter value making use of the purity, precision, recall, F1 score, rand index and k-means loss metrics.
 
 
 
-Q4: Describe your analysis of the parameters using the internal and external indicators referred in the assignment page. Include the  plots for the indicator values ​​(indicating the image name of each plot in one line in your answer) as a function of the parameters and explain how you chose the ranges for examining these parameters. Indicate, with justification, what conclusions you can draw from this analysis.
-R4:
+Q3: Describe your analysis of the parameters using the internal and external indicators referred in the assignment page. Include the  plots for the indicator values ​​(indicating the image name of each plot in one line in your answer) as a function of the parameters and explain how you chose the ranges for examining these parameters. Indicate, with justification, what conclusions you can draw from this analysis.
+R3: We created a plot for each metric and plotted the value of the metric in function of the varying parameter for each algorithm. We created 2 figures, one where metrics for all algorithms are plotted in function of the number of clusters (Figure 1) and one where the metrics for Agglomerative Clustering are plotted in function of the distance treshold (Figure 2). 
+We picked the range for examining the number of clusters by testing different ranges and checking if the metrics would "stabilize" at some value after a certain k. We concluded that after 6 clusters, the values don't vary a lot.
+We picked the range for examining the distance treshold by testing different ranges and noting that as the distance treshold increases, the metrics tend to decrease.
+From this analysis we can conclude there is a tendency for metrics to increase with the number of clusters and decrease with the distance treshold. However, a high number of clusters isn't necessarily useful for out practical case.
 
-Q5: Select some of the parameter values ​​tested in the question above and examine the corresponding clusters more closely, generating the HTML file with the images. Explain how you selected these parameter values, discuss the different options and propose a recommendation that could help the biologists' task of classifying cells and rejecting segmentation errors.
-R5:
 
-Q6: Discuss advantages or problems with the algorithms analysed for the purpose of helping biologists to organize these images, considering your theoretical knowledge of these algorithms as well as the results you obtained in your work.
+Q4: Select some of the parameter values ​​tested in the question above and examine the corresponding clusters more closely, generating the HTML file with the images. Explain how you selected these parameter values, discuss the different options and propose a recommendation that could help the biologists' task of classifying cells and rejecting segmentation errors.
+R4: We selected number of clusters equal to 3, since the recall metric decreases with a higher slope after 3 and the other metrics increase with a higher slope up to 3. Analysing the HTML files, we concluded that for the Spectral Clustering Algorithm, the cells in each cluster looked very similar as opposite to the cells in other clusters. Therefore we would recommend using Spectral Clustering with 3 clusters.
+
+
+Q5: Discuss advantages or problems with the algorithms analysed for the purpose of helping biologists to organize these images, considering your theoretical knowledge of these algorithms as well as the results you obtained in your work.
+R5: 
+
+
+Q6: Consider other clustering algorithms embedded in the Scikit-Learn library. Choose one and apply it to this problem, optimizing the parameters you deem appropriate in the way that you find adequate. Justify your choices and discuss whether this option would yield more useful results for biologists.
 R6:
 
-Q7: Consider other clustering algorithms embedded in the Scikit-Learn library. Choose one and apply it to this problem, optimizing the parameters you deem appropriate in the way that you find adequate. Justify your choices and discuss whether this option would yield more useful results for biologists.
-R7:
 
-Q8: Implement the Bissecting K-Means hierarchical clustering algorithm as described in the assignment page and Lecture 19. Examine and discuss the results and their application to the problem of helping the biologists select and classify cell images.
+(Optional) Q7: Explain how you selected the best attributes for the clustering phase. In particular, indicate the visualization methods used to explore the extracted attributes and any statistical tests used.
+R7: We used the ANOVA F-Test and selected the 6 features with the best F value.
+
+
+(Optional) Q8: Implement the Bissecting K-Means hierarchical clustering algorithm as described in the assignment page and Lecture 19. Examine and discuss the results and their application to the problem of helping the biologists select and classify cell images.
 R8:
