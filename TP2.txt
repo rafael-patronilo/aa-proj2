@@ -12,7 +12,7 @@ QUESTIONS:
 
 
 Q1: After extracting the attributes, did you standardize or normalize the values? Justify your decision.
-R1: 
+R1: We normalized the values since we don't know the distribution of the data.
 
 
 Q2: Explain how you found the parameters for the clustering algorithms.
@@ -32,11 +32,11 @@ R4: We selected number of clusters equal to 3, since the recall metric decreases
 
 
 Q5: Discuss advantages or problems with the algorithms analysed for the purpose of helping biologists to organize these images, considering your theoretical knowledge of these algorithms as well as the results you obtained in your work.
-R5: 
+R5: Given that both Spectral Clustering and AgglomerativeClustering are capable of doing non linear cluster separations, they are both very appropriate for this clustering problem. KMeans on the other
 
 
 Q6: Consider other clustering algorithms embedded in the Scikit-Learn library. Choose one and apply it to this problem, optimizing the parameters you deem appropriate in the way that you find adequate. Justify your choices and discuss whether this option would yield more useful results for biologists.
-R6:
+R6: We chose the DBSCAN clustering algorithm and optimized the eps with the distance. We chose this algorithm since it showed good results in doing non linear separations in the sklearn examples. Given that the metric values for this algorithm were lower than the AgglomerativeClustering (), we would not recommend using this algorithm.
 
 
 (Optional) Q7: Explain how you selected the best attributes for the clustering phase. In particular, indicate the visualization methods used to explore the extracted attributes and any statistical tests used.

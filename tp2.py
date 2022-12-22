@@ -2,7 +2,7 @@ from tp2_aux import images_as_matrix, report_clusters, report_clusters_hierarchi
 from metrics import calculate_metrics
 from sklearn.decomposition import PCA, KernelPCA
 from sklearn.manifold import Isomap
-from sklearn.cluster import AgglomerativeClustering, SpectralClustering, KMeans
+from sklearn.cluster import AgglomerativeClustering, SpectralClustering, KMeans, DBSCAN
 from sklearn.feature_selection import f_classif, SelectKBest
 from sklearn.preprocessing import Normalizer, StandardScaler
 from datetime import datetime
@@ -110,6 +110,7 @@ def plot_metrics(clustering_methods, varying_parameter, parameter_name):
 all_clusterings = plot_metrics(clustering_methods, K_RANGE, "k clusters")
 aglomerative_distance = (
     ("Agglomerative", lambda d : AgglomerativeClustering(n_clusters=None, distance_threshold=d)),
+    ("DBSCAN", lambda d : DBSCAN(eps=d))
 )
 plot_metrics(aglomerative_distance, D_RANGE, "distance")
 
@@ -119,9 +120,4 @@ def report(name, x):
 report("Agglomerative", 3)
 report("Spectral", 3)
 report("KMeans", 3)
-"""
-for method_name, clusterings in all_clusterings:
-        for x, clustering in zip(K_RANGE, clusterings):
-            report_clusters(id_to_label[labeled][:,0], clustering, f"{method_name}-{x}.html")
-"""
 plt.show()
